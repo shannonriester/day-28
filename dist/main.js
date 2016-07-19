@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module '../session' from '/Users/shannonriester/Desktop/tiy/day-27/assignments/tweeterClone/app/scripts'");
