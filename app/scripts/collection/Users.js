@@ -5,7 +5,7 @@ import settings from '../settings';
 
 const Users = Backbone.Collection.extend({
   model: user,
-  url: `https://baas.kinvey.com/appdata/${settings.appKey}/tweeterUsers`
+  url: `https://baas.kinvey.com/user/${settings.appKey}`
 });
 
 let userCollection = new Users();

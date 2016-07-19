@@ -1,31 +1,37 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
+import router from '../router';
+import settings from '../settings';
 import session from '../models/session';
+import SignupView from './signupView';
 
 const LoginView = Backbone.View.extend({
     tagName: 'form',
     className: 'login-form',
     events: {
-        'submit': 'submitFunction'
+        'submit': 'submitFunction',
+        'click #signup-btn': 'signupFunction'
     },
     submitFunction: function(evt) {
         evt.preventDefault();
         let username = this.$('#username').val();
         let password = this.$('#password').val();
-        session.save({
-            username: username,
-            password: password
-        }, {
+        session.save({username: username, password: password}, {
             success: function(model, response) {
                 model.unset('password');
-                router.navigate('profile', {
-                    trigger: true
-                });
+                router.navigate('profile', {trigger: true});
             },
             error: function() {
-                console.log('ERROR! User failed to login. See loginView.js');
+                router.navigate('login', {trigger: true});
+                console.log('ERROR! User failed to login! See loginView.js');
             }});
+    },
+    signupFunction: function(){
+      let signup = new SignupView();
+      signup.render();
+      $('.register').empty().append(signup.$el);
+      router.navigate('login/signup', {trigger:true});
     },
     template: function() {
         return `
@@ -34,16 +40,9 @@ const LoginView = Backbone.View.extend({
         <input id="username" type="text" name="username" placeholder="username" />
         <input id="password" type="text" name="password" placeholder="password" />
         <input type="submit" name="submit" placeholder="submit" />
-          <div class="signup-modal">
-            <h2>Sign Up</h2>
-            <input type="text" name="username" placeholder="username" />
-            <input type="text" name="password1" placeholder="password" />
-            <input type="text" name="password2" placeholder="confirm password" />
-            <input type="submit" name="submit" placeholder="submit" />
-          </div>
-          <section class="register">
+        <section class="register">
             <h3>Not Registered? Sign Up</h3>
-            <button type="button" name="signup-btn">Sign Up</button>
+            <button id="signup-btn" type="button" name="signup-btn">Sign Up</button>
         </section>
       </form>
       `;

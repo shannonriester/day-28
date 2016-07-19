@@ -4,7 +4,7 @@ import settings from '../settings';
 
 const User = Backbone.Model.extend({
   idAttribute: '_id',
-  urlRoot: `https://baas.kinvey.com/appdata/${settings.appKey}/tweeterUsers`,
+  urlRoot: `https://baas.kinvey.com/user/${settings.appKey}`,
   defaults: {
     username: ''
   }

@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 
 import router from './router';
 import settings from './settings';
-import session from './session';
+import session from './models/session';
 
 $(document).ajaxSend(function(evt, xhrAjax, jqueryAjax){
   console.log('interecepted by ajaxSend...see entry.js');
@@ -25,3 +25,6 @@ if (!session.username) {
 }
 
 console.log(settings);
+console.log('username is "shannon"');
+
+console.log('password is "password"');

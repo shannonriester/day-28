@@ -3,11 +3,11 @@ import Backbone from 'backbone';
 import settings from '../settings';
 import user from './user';
 
-const Session = Backbone.Model.Extend({
+const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/${settings.appKey}/login`,
   defaults: {
     username: '',
-    authtoken: ''
+    // authtoken: ''
   },
   parse: function(response){
     if (response) {
