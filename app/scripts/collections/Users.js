@@ -1,10 +1,10 @@
 import Backbone from 'backbone';
 
-import user from '../models/user';
+import User from '../models/user';
 import settings from '../settings';
 
 const Users = Backbone.Collection.extend({
-  model: user,
+  model: User,
   url: `https://baas.kinvey.com/user/${settings.appKey}`
 });
 

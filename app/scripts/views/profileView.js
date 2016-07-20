@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 
 import userCollection from '../collections/Users';
 import session from '../models/session';
-import user from '../models/user';
+// import User from '../models/user';
 
 const ProfileView = Backbone.View.extend({
   initialize: function(){

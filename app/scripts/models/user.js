@@ -5,7 +5,7 @@ import settings from '../settings';
 import session from './session';
 
 const User = Backbone.Model.extend({
-  idAttribute: '_id',
+  // idAttribute: '_id',
   urlRoot: `https://baas.kinvey.com/appdata/${settings.appKey}/users`,
   defaults: {
     username: '',
@@ -19,7 +19,7 @@ const User = Backbone.Model.extend({
   }
 });
 
-let user = new User();
+// let user = new User();
 // console.log(user);
 
-export default user;
+export default User;

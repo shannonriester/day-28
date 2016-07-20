@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 import settings from '../settings';
 
 const Tweet = Backbone.Model.extend({
-  idAttribute: '_id',
+  // idAttribute: '_id',
   urlRoot: `https://baas.kinvey.com/appdata/${settings.appKey}/tweets`,
   defaults: {
     username: '',
@@ -13,6 +13,6 @@ const Tweet = Backbone.Model.extend({
   }
 });
 
-let user = new Tweet();
+// let user = new Tweet();
 
-export default user;
+export default Tweet;

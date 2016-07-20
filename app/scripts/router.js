@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 
 import settings from './settings';
-import user from './models/session';
+// import User from './models/session';
 import session from './models/session';
 import LoginView from './views/loginView';
 import LogoutView from './views/logoutView';

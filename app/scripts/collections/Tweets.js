@@ -1,10 +1,10 @@
 import Backbone from 'backbone';
 
-import tweet from '../models/tweet';
+import Tweet from '../models/tweet';
 import settings from '../settings';
 
 const Tweets = Backbone.Collection.extend({
-  model: tweet,
+  model: Tweet,
   url: `https://baas.kinvey.com/appdata/${settings.appKey}/tweets`
 });
 
