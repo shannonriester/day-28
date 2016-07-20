@@ -26,8 +26,7 @@ const Session = Backbone.Model.extend({
       success: (model, response) => {
           this.unset('password');
             //this saves authtoken to local storage
-          window.localStorage.setItem('authtoken', response._kmd.authtoken);
-          console.log(model, response);
+          // window.localStorage.setItem('authtoken', response._kmd.authtoken);
           router.navigate(`user/${model.get('userId')}`, {trigger:true});
       },
       error: function() {

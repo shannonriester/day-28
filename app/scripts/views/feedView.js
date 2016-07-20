@@ -2,6 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 
 import tweetCollection from '../collections/Tweets';
+import Tweet from '../models/tweet';
 import TweetView from './tweetView';
 // import session from '../models/session';
 
@@ -18,7 +19,6 @@ const FeedView = Backbone.View.extend({
     return `
       <h2>Tweets</h2>
       <ul class="tweets-feed">
-
       </ul>
     `;
   },

@@ -8,13 +8,10 @@ import session from '../models/session';
 
 const ProfileView = Backbone.View.extend({
   initialize: function(id){
-    //instead of using let profileModel = userCollection.fetch(...),
-      //use this.model so you can use it below in the return statement of the template
       if (!userCollection._id){
         userCollection.add({'_id':id});
       }
       this.model = userCollection.get(id);
-      console.log(this.model = userCollection.get(id));
       this.model.fetch();
       this.model.on('change', () =>{
         this.render();

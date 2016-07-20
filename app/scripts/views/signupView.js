@@ -5,7 +5,7 @@ import router from '../router';
 import settings from '../settings';
 import User from '../models/user';
 import session from '../models/session';
-import LoginView from './loginView';
+import loginView from './loginView';
 
 const SignupView = Backbone.View.extend({
     tagName: 'form',

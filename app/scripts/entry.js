@@ -8,8 +8,8 @@ import session from './models/session';
 $(document).ajaxSend(function(evt, xhrAjax, jqueryAjax){
   // console.log('interecepted by ajaxSend...see entry.js');
 
-  if (localStorage.getItem('authtoken')){
-    xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + localStorage.getItem('authtoken'));
+  if (session.get('authtoken')){
+    xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + session.get('authtoken'));
   } else {
     xhrAjax.setRequestHeader('Authorization', 'Basic ' + settings.basicAuth);
   }

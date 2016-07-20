@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 
 const TweetView = Backbone.View.extend({
   tagName: 'li',
-  className: 'tweet',
+  className: 'tweetLi',
   template: function(){
     return `
       <section class="tweet-user-info">

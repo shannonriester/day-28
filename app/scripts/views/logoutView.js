@@ -18,12 +18,12 @@ const LogoutView = Backbone.View.extend({
             success: function(model, response) {
                 model.unset('password');
                 sessionStorage.removeItem('session');
-                delete session.authtoken;
+                session.clear(authtoken);
                 console.log('User logged out!');
             }});
     },
     error: function() {
-        console.log('ERROR! User failed to signup! See signupView.js');
+        console.log('ERROR! User failed to signup! See logoutView.js');
     },
     template: function() {
             return `

@@ -8,8 +8,10 @@ import session from './models/session';
 import LoginView from './views/loginView';
 import LogoutView from './views/logoutView';
 import ProfileView from './views/profileView';
-import FeedView from './views/feedView';
-
+import TweetPageView from './views/tweetPageView';
+// import FeedView from './views/feedView';
+// import TweetView from './views/tweetView';
+// import TweetPost from './views/tweetPost';
 
 const Router = Backbone.Router.extend({
   routes : {
@@ -32,21 +34,20 @@ const Router = Backbone.Router.extend({
   profileFunction : function(id){
     tweetsCollection.off();
     if (!session.get('username')){
-      console.log('no find username');
+      // console.log('no find username');
       if (localStorage.getItem('authtoken')) {
-        console.log('find auth token');
+        // console.log('find auth token');
         session.retrieve();
       }
     } else {
-      console.log('found username');
-
+      // console.log('found username');
     let logout = new LogoutView();
     let profile = new ProfileView(id);
-    let feed = new FeedView();
+    let tweetPageView = new TweetPageView();
     $('.container').empty()
                    .append(logout.render().$el)
                    .append(profile.render().$el)
-                   .append(feed.render().$el);
+                   .append(tweetPageView.render().$el);
    }
   },
 

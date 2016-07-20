@@ -13,6 +13,4 @@ const Tweet = Backbone.Model.extend({
   }
 });
 
-// let tweet = new Tweet();
-
 export default Tweet;
