@@ -38,7 +38,7 @@ const LoginView = Backbone.View.extend({
       <form class="login-modal">
         <h1>Riester's Tweeters</h1>
         <input id="username" type="text" name="username" placeholder="username" />
-        <input id="password" type="text" name="password" placeholder="password" />
+        <input id="password" type="password" name="password" placeholder="password" />
         <input type="submit" name="submit" placeholder="submit" />
         <section class="register">
             <h3>Not Registered? Sign Up</h3>

@@ -7,7 +7,6 @@ const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/${settings.appKey}/login`,
   defaults: {
     username: '',
-    // authtoken: ''
   },
   parse: function(response){
     if (response) {

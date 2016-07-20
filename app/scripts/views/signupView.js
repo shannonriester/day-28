@@ -17,13 +17,25 @@ const SignupView = Backbone.View.extend({
         evt.preventDefault();
         // $('.signup-modal').toggleClass('showSignup');
         let username = this.$('input[name="username"]').val();
+        let firstname = this.$('input[name="firstname"]').val();
+        let lastname = this.$('input[name="lastname"]').val();
+        let birthdayDay = this.$('input[name="birthdayMonth"]').val();
+        let birthdayMonth = this.$('input[name="birthdayDay"]').val();
+        let birthdayYear = this.$('input[name="birthdayYear"]').val();
         let password = this.$('input[name="password"]').val();
         let password2 = this.$('input[name="password2"]').val();
         if (password !== password2){
           console.log('your passwords don\'t match!');
         } else {
-        // router.navigate('profile', {trigger: true});
-        session.save({username: username, password: password}, {
+        session.save({
+          username: username,
+          firstname: firstname,
+          lastname: lastname,
+          birthdayDay: birthdayDay,
+          birthdayMonth: birthdayMonth,
+          birthdayYear: birthdayYear,
+          password: password
+        }, {
             url: `https://baas.kinvey.com/user/${settings.appKey}`,
             success: function(session, response) {
                 // session.username = username;
@@ -49,6 +61,11 @@ const SignupView = Backbone.View.extend({
         return `
           <h2>Sign Up</h2>
           <input type="text" name="username" placeholder="username" />
+          <input type="text" name="firstname" placeholder="firstname" />
+          <input type="text" name="lastname" placeholder="lastname" />
+          <input type="text" name="birthdayMonth" placeholder="MM" maxlength="2" />
+          <input type="text" name="birthdayDay" placeholder="DD" maxlength="2" />
+          <input type="text" name="birthdayYear" placeholder="YYYY" maxlength="4" />
           <input type="password" name="password" placeholder="password" />
           <input type="password" name="password2" placeholder="confirm password" />
           <input type="submit" name="submit" placeholder="submit" />
