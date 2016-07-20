@@ -1,17 +1,20 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
+import settings from '../settings';
 import userCollection from '../collections/Users';
 import session from '../models/session';
-// import User from '../models/user';
+import User from '../models/user';
 
 const ProfileView = Backbone.View.extend({
   initialize: function(){
-    userCollection.on('add', () =>{
-      this.render();
-      console.log(this);
+    userCollection.fetch({
+      url: `https://baas.kinvey.com/appdata/${settings.appKey}/profile/${username}`,
+      success: (model, response) => {
+        console.log('response', response);
+        console.log('model ', model);
+      }
     });
-    userCollection.fetch();
   },
   tagName: 'div',
   className: 'profile',
@@ -22,7 +25,6 @@ const ProfileView = Backbone.View.extend({
         <h2>${session.firstname} ${session.lastname}</h2>
         <h4>@${session.username}</h2>
         <p>a little quote I wrote</p>
-        <data>joined on:${user.joinedOn}</data>
         <data>birthday ${session.birthdayMonth} ${session.birthdayDay}, ${session.birthdayYear}</data>
       </div>
       <nav class="nav-profile">
@@ -34,6 +36,10 @@ const ProfileView = Backbone.View.extend({
         </ul>
       </nav>
       `;
+  },
+  render: function(){
+    this.$el.html(this.template());
+    return this;
   }
 });
 

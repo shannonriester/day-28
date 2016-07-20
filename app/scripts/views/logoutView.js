@@ -14,7 +14,7 @@ const LogoutView = Backbone.View.extend({
     logoutFunction: function(evt) {
         evt.preventDefault();
         session.save({
-            url: `https://baas.kinvey.com/user/${settings.appKey}`,
+            url: `https://baas.kinvey.com/user/${settings.appKey}_logout`,
             success: function(response) {
                 sessionStorage.removeItem('session');
                 delete session.authtoken;

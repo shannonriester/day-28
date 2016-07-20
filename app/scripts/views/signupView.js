@@ -38,8 +38,8 @@ const SignupView = Backbone.View.extend({
         }, {
             url: `https://baas.kinvey.com/user/${settings.appKey}`,
             success: function(session, response) {
-                // session.username = username;
-                // session.authtoken = response._kmd.authtoken;
+                session.username = username;
+                session.authtoken = response._kmd.authtoken;
                 sessionStorage.session = JSON.stringify(session);
                 session.unset('password');
                 router.navigate('profile', {trigger:true});

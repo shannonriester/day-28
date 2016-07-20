@@ -19,6 +19,9 @@ const LoginView = Backbone.View.extend({
         let password = this.$('#password').val();
         session.save({username: username, password: password}, {
             success: function(model, response) {
+              model.username = username;
+              model.authtoken = response._kmd.authtoken;
+              sessionStorage.model = JSON.stringify(session);
                 model.unset('password');
                 router.navigate('profile', {trigger: true});
             },
