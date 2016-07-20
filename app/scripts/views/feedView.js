@@ -11,6 +11,9 @@ const FeedView = Backbone.View.extend({
     tweetCollection.on('add', () => {
       this.render();
     });
+    tweetCollection.on('change', () => {
+      this.render();
+    });
     tweetCollection.fetch();
   },
   tagName: 'div',
@@ -29,7 +32,7 @@ const FeedView = Backbone.View.extend({
         model: tweet
       });
       tweetItem.render();
-      this.$('ul').append(tweetItem.$el);
+      this.$('.tweets-feed').append(tweetItem.$el);
   });
     return this;
   }
