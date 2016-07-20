@@ -9,10 +9,10 @@ import User from '../models/user';
 const ProfileView = Backbone.View.extend({
   initialize: function(){
     userCollection.fetch({
-      url: `https://baas.kinvey.com/appdata/${settings.appKey}/profile/${username}`,
+      url: `https://baas.kinvey.com/appdata/${settings.appKey}/profile/${session.username}`,
       success: (model, response) => {
-        console.log('response', response);
-        console.log('model ', model);
+        // console.log('response', response);
+        // console.log('model ', model);
       }
     });
   },

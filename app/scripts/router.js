@@ -13,8 +13,8 @@ const Router = Backbone.Router.extend({
     login          :  'loginFunction',
     'login/signup' :  'signupFunction',
     logout         :  'signoutFunction',
-    // profile        :  'profileFunction',
-    // 'profile/:id'  :  'idProfileFunction'
+    profile        :  'profileFunction',
+    'profile/:id'  :  'idProfileFunction'
   },
   loginFunction : function(){
     let login = new LoginView();
@@ -31,6 +31,16 @@ const Router = Backbone.Router.extend({
                    .append(logout.render().$el)
                    .append(profile.render().$el);
   },
+  idProfileFunction : function(){
+    // console.log( ' session', session.firstname);
+    // console.log( ' user', user.firstname);
+    let logout = new LogoutView();
+    let profile = new ProfileView();
+
+    $('.container').empty()
+                   .append(logout.render().$el)
+                   .append(profile.render().$el);
+  }
 
 });
 

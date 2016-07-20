@@ -5,7 +5,7 @@ import settings from '../settings';
 import session from './session';
 
 const User = Backbone.Model.extend({
-  // idAttribute: '_id',
+  idAttribute: '_id',
   urlRoot: `https://baas.kinvey.com/appdata/${settings.appKey}/users`,
   defaults: {
     username: '',

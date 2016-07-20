@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 
 import tweetCollection from '../collections/Tweets';
-import Tweet from '../models/tweet';
+import TweetView from '../models/tweetView';
 // import session from '../models/session';
 
 const FeedView = Backbone.View.extend({
