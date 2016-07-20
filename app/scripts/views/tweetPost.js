@@ -27,6 +27,7 @@ const TweetPost = Backbone.View.extend({
   postTweetFunction: function(evt) {
     evt.preventDefault();
     tweetCollection.create({
+      username: session.get('username'),
       author: session.get('username'),
       body : this.$('input[name="tweet-field"]').val()
     },{

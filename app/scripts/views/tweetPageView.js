@@ -4,12 +4,13 @@ import TweetPost from './tweetPost';
 import FeedView from './feedView';
 
 const TweetPageView = Backbone.View.extend({
+  className: 'tweetPageView',
   render: function(){
     let tweetPost =  new TweetPost();
     tweetPost.render();
     let feedView =  new FeedView();
     feedView.render();
-    this.$el.append([feedView.$el, tweetPost.$el]);
+    this.$el.append([tweetPost.$el, feedView.$el,]);
     return this;
   }
 });

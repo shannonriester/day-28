@@ -18,7 +18,7 @@ const LogoutView = Backbone.View.extend({
             success: function(model, response) {
                 model.unset('password');
                 sessionStorage.removeItem('session');
-                session.clear(authtoken);
+                delete session.authtoken;
                 console.log('User logged out!');
             }});
     },
