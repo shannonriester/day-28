@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 
 import tweetCollection from '../collections/Tweets';
-import TweetView from '../models/tweetView';
+import TweetView from './tweetView';
 // import session from '../models/session';
 
 const FeedView = Backbone.View.extend({
@@ -35,3 +35,5 @@ const FeedView = Backbone.View.extend({
   }
 
 });
+
+export default FeedView;

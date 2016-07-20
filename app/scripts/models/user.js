@@ -6,7 +6,7 @@ import session from './session';
 
 const User = Backbone.Model.extend({
   idAttribute: '_id',
-  urlRoot: `https://baas.kinvey.com/appdata/${settings.appKey}/users`,
+  urlRoot: `https://baas.kinvey.com/user/${settings.appKey}`,
   defaults: {
     username: '',
     joinedOn: moment().format('MMM Do YYYY'),

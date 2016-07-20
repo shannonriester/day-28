@@ -1,6 +1,8 @@
 import Backbone from 'backbone';
 
 import settings from '../settings';
+import router from '../router';
+import User from './user';
 
 const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/${settings.appKey}/login`,
@@ -15,7 +17,30 @@ const Session = Backbone.Model.extend({
         authtoken: response._kmd.authtoken
       };
     }
-  }
+  },
+  //local storage is specific to the url (only stored on my browser on that website's page/url)
+  //session is still tied to the tab
+  login: function(username, password) {
+  this.save({'username': username, 'password': password},
+     {
+      success: (model, response) => {
+          this.unset('password');
+            //this saves authtoken to local storage
+          window.localStorage.setItem('authtoken', response._kmd.authtoken);
+          console.log(model, response);
+          router.navigate(`user/${model.get('userId')}`, {trigger:true});
+      },
+      error: function() {
+          console.log('ERROR! User failed to login! See session.js');
+        }
+      });
+    },
+    retrieve: function(){
+      //get a rest api so you can figure out who you are on the server
+      this.fetch({
+        url: `https://baas.kinvey.com/user/${settings.appKey}/_me`
+      });
+    }
 });
 
 let session = new Session();

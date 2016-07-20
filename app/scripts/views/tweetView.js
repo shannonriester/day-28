@@ -8,7 +8,7 @@ const TweetView = Backbone.View.extend({
     return `
       <section class="tweet-user-info">
         <img src="#" alt="profile picture icon"/>
-        <h5>@${this.model.get('username')}</h5>
+        <a href="#${this.model.get('_id')}"<h5>@${this.model.get('username')}</h5></a>
         <p>${this.model.get('author')}</p>
         <p>${this.model.get('timestamp')}</p>
       </section>

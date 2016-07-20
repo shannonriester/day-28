@@ -4,31 +4,21 @@ import Backbone from 'backbone';
 import router from '../router';
 import settings from '../settings';
 import session from '../models/session';
+import User from '../models/user';
 import SignupView from './signupView';
 
 const LoginView = Backbone.View.extend({
     tagName: 'form',
     className: 'login-form',
     events: {
-        'submit': 'submitFunction',
+        'click #login-btn': 'submitFunction',
         'click #signup-btn': 'signupFunction'
     },
-    submitFunction: function(evt) {
+    submitFunction: function (evt) {
         evt.preventDefault();
         let username = this.$('#username').val();
         let password = this.$('#password').val();
-        session.save({username: username, password: password}, {
-            success: function(model, response) {
-              model.username = username;
-              model.authtoken = response._kmd.authtoken;
-              sessionStorage.model = JSON.stringify(session);
-                model.unset('password');
-                router.navigate('profile', {trigger: true});
-            },
-            error: function() {
-                router.navigate('login', {trigger: true});
-                console.log('ERROR! User failed to login! See loginView.js');
-            }});
+        session.login(username, password);
     },
     signupFunction: function(){
       let signup = new SignupView();
@@ -42,7 +32,7 @@ const LoginView = Backbone.View.extend({
         <h1>Riester's Tweeters</h1>
         <input id="username" type="text" name="username" placeholder="username" />
         <input id="password" type="password" name="password" placeholder="password" />
-        <input type="submit" name="submit" placeholder="submit" />
+        <input id="login-btn" type="submit" name="submit" placeholder="submit" />
         <section class="register">
             <h3>Not Registered? Sign Up</h3>
             <button id="signup-btn" type="button" name="signup-btn">Sign Up</button>

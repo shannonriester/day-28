@@ -2,45 +2,53 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 
 import settings from './settings';
-// import User from './models/session';
+import tweetsCollection from './collections/Tweets';
+
 import session from './models/session';
 import LoginView from './views/loginView';
 import LogoutView from './views/logoutView';
 import ProfileView from './views/profileView';
+import FeedView from './views/feedView';
+
 
 const Router = Backbone.Router.extend({
   routes : {
-    login          :  'loginFunction',
+    '/*'           :  'loginFunction',
+    'login'          :  'loginFunction',
     'login/signup' :  'signupFunction',
-    logout         :  'signoutFunction',
-    profile        :  'profileFunction',
-    'profile/:id'  :  'idProfileFunction'
+    'logout'      :   'logoutFunction',
+    'user/:id' :  'profileFunction'
   },
   loginFunction : function(){
+    tweetsCollection.off();
     let login = new LoginView();
     login.render();
     $('.container').empty().append(login.$el);
   },
-  profileFunction : function(){
-    // console.log( ' session', session.firstname);
-    // console.log( ' user', user.firstname);
-    let logout = new LogoutView();
-    let profile = new ProfileView();
-
-    $('.container').empty()
-                   .append(logout.render().$el)
-                   .append(profile.render().$el);
+  logoutFunction : function(){
+    tweetsCollection.off();
+    router.navigate('login', {trigger: true});
   },
-  idProfileFunction : function(){
-    // console.log( ' session', session.firstname);
-    // console.log( ' user', user.firstname);
-    let logout = new LogoutView();
-    let profile = new ProfileView();
+  profileFunction : function(id){
+    tweetsCollection.off();
+    if (!session.get('username')){
+      console.log('no find username');
+      if (localStorage.getItem('authtoken')) {
+        console.log('find auth token');
+        session.retrieve();
+      }
+    } else {
+      console.log('found username');
 
+    let logout = new LogoutView();
+    let profile = new ProfileView(id);
+    let feed = new FeedView();
     $('.container').empty()
                    .append(logout.render().$el)
-                   .append(profile.render().$el);
-  }
+                   .append(profile.render().$el)
+                   .append(feed.render().$el);
+   }
+  },
 
 });
 

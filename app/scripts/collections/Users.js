@@ -5,7 +5,7 @@ import settings from '../settings';
 
 const Users = Backbone.Collection.extend({
   model: User,
-  url: `https://baas.kinvey.com/user/${settings.appKey}`
+  url: `https://baas.kinvey.com/user/${settings.appKey}/`
 });
 
 let userCollection = new Users();

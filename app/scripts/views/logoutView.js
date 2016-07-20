@@ -13,14 +13,12 @@ const LogoutView = Backbone.View.extend({
     },
     logoutFunction: function(evt) {
         evt.preventDefault();
-        session.save({
-            url: `https://baas.kinvey.com/user/${settings.appKey}_logout`,
-            success: function(response) {
+        session.save(null, {
+            url: `https://baas.kinvey.com/user/${settings.appKey}/_logout`,
+            success: function(model, response) {
+                model.unset('password');
                 sessionStorage.removeItem('session');
                 delete session.authtoken;
-                router.navigate('login', {
-                    trigger: true
-                });
                 console.log('User logged out!');
             }});
     },
