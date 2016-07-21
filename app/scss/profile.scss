@@ -1,0 +1,86 @@
+// .logout {
+//   float: right;
+// }
+.tweetPost {
+  text-align: center;
+  width: 72vw;
+  margin: 0 auto;
+  background: #E5F2F7;
+
+  padding: 2%;
+  input {
+    width: 75%;
+    padding: 2%;
+    border: none;
+    background: #FFF;
+    color: #339DC3;
+    border-radius: 2px;
+  }
+}
+.tweet-field, .logout, .post-btn {
+
+}
+.tweets-feed {
+  height: 100vh;
+  width: 70vw;
+  margin: 0 auto;
+  background: #FFF;
+  border-radius: 5px;
+  padding: 3%;
+  h2 {
+    text-align: center;
+    margin: 0;
+  }
+  .ul-feed {
+    margin: 0;
+    padding: 0;
+  }
+  .tweetLi {
+    // flex: 100;
+    list-style-type: none;
+    display: flex;
+    .edit-btns {
+      display: none;
+    }
+    .tweet-user-info {
+      align-self: center;
+      &:hover {
+        .edit-btns {
+          display: block;
+
+        }
+      }
+      width: 50%;
+        h5 {
+          font-size: 1.1em;
+          color: #000;
+          margin: 0;
+          display: inline-flex;
+          margin-right: 2px;
+          &:hover {
+            text-decoration: underline;
+            color: $accent;
+          }
+        }
+          p {
+            margin: 0;
+            display: inline-flex;
+            color: #8899A8;
+          }
+      }
+    }
+    main {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      .tweet {
+        margin: 0;
+        width: 50%;
+      }
+    }
+    .timestamp {
+      margin: 0;
+      width: 15%;
+      overflow: hidden;
+    }
+  }

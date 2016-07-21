@@ -21,7 +21,7 @@ const FeedView = Backbone.View.extend({
   template: function(){
     return `
       <h2>Tweets</h2>
-      <ul class="tweets-feed">
+      <ul class="ul-feed">
       </ul>
     `;
   },
@@ -32,7 +32,7 @@ const FeedView = Backbone.View.extend({
         model: tweet
       });
       tweetItem.render();
-      this.$('.tweets-feed').append(tweetItem.$el);
+      this.$('.ul-feed').append(tweetItem.$el);
   });
     return this;
   }
