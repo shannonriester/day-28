@@ -1,0 +1,43 @@
+.login-form {
+  width: 50vw;
+  // height: 45vh;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: $accent;
+  color: #FFF;
+  border-radius: 5px;
+  input{
+    background: #FAFFBD;
+    border: none;
+    display: block;
+    margin: 1% auto;
+    padding: 2%;
+    width: 35vw;
+  }
+  #login-btn, #signup-btn, .cancel-btn {
+    border: none;
+    padding: 3%;
+    font-weight: 800;
+    width: 37vw;
+    border-radius: 5px;
+    background: #FFF;
+    color: $accent;
+  }
+  #signup-btn {
+    width: 25vw;
+    margin: 5% auto;
+    display: block;
+  }
+
+  .signup-View {
+    // transition: 1s ease-in;
+    margin-top: 10%;
+  }
+  .cancel-btn {
+    width: 25vw;
+    margin-bottom: 10%;
+  }
+}

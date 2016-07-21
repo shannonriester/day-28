@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
+import router from '../router';
 import tweetCollection from '../collections/Tweets';
 import session from '../models/session';
 
@@ -8,18 +9,18 @@ const TweetPost = Backbone.View.extend({
   tagName: 'form',
   className: 'tweetPost',
   events: {
-    'click .post-btn': 'postTweetFunction'
-    // 'keyup input[name="tweet-field"]': 'keyAction',
+    'click .post-btn': 'postTweetFunction',
+    'keyup input[name="tweet-field"]': 'keyAction',
   },
   keyAction: function(evt){
     evt.preventDefault();
     if (evt === 13) {
       tweetCollection.create({
         author: session.get('username'),
-        body : this.$('input[name="tweet"]').val()
+        body : this.$('input[name="tweet-field"]').val()
       },{
         success: () => {
-          this.$('input[name="tweet"]').val('');
+          this.$('input[name="tweet-field"]').val('');
         }
       });
     }
@@ -32,7 +33,7 @@ const TweetPost = Backbone.View.extend({
       body : this.$('input[name="tweet-field"]').val()
     },{
       success: () => {
-        this.$('input[name="tweet"]').val('');
+        this.$('input[name="tweet-field"]').val('');
       }
     });
   },

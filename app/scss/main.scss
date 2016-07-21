@@ -1,0 +1,16 @@
+@import "../../node_modules/normalize-scss/sass/normalize/import-now";
+@import "_variables.scss";
+@import "login.scss";
+// @import "signup.scss";
+// @import "header.scss";
+// @import "contacts.scss";
+// @import "newContact.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Avenir;
+  font-weight: 100;
+  background: $background;
+  color: $main;
+}

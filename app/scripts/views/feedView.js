@@ -11,7 +11,7 @@ const FeedView = Backbone.View.extend({
     tweetCollection.on('add', () => {
       this.render();
     });
-    tweetCollection.on('change', () => {
+    tweetCollection.on('remove', () => {
       this.render();
     });
     tweetCollection.fetch();

@@ -1,26 +1,35 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
+import router from '../router';
 import session from '../models/session';
+import EditView from './editView';
 
 const TweetView = Backbone.View.extend({
   tagName: 'li',
   className: 'tweetLi',
   events: {
     'click .delete': 'deleteFunction',
-    'click .edit':'editFunction'
+    'click .edit':'editFunction',
+    'click .userLink': 'routeProfileFunction'
   },
-  deleteFunction: function() {
+  deleteFunction: function(evt) {
+    evt.preventDefault();
     this.model.destroy();
+  },
+  editFunction: function(evt){
+    evt.preventDefault();
+    router.navigate('edit', {trigger:true});
+  },
+  routeProfileFunction: function(evt){
+    evt.preventDefault();
+    router.navigate(`user/${this.model.get('author')}`, {trigger:true});
   },
   template: function(){
     if (session.get('username') !== this.model.get('author')){
       return `
         <section class="tweet-user-info">
-          <ul class="ul-edit-btns">
-            <li><button class="edit">Edit</button></li>
-          </ul>
-          <a href="#${this.model.get('_id')}"><h5>@${this.model.get('username')}</h5></a>
+          <h5 class="userLink">@${this.model.get('username')}</h5>
           <p>${this.model.get('author')}</p>
           <p>${this.model.get('timestamp')}</p>
         </section>
@@ -35,7 +44,7 @@ const TweetView = Backbone.View.extend({
             <li><button class="edit">Edit</button></li>
             <li><button class="delete">Delete</button></li>
           </ul>
-          <a href="#${this.model.get('_id')}"><h5>@${this.model.get('username')}</h5></a>
+          <h5 class="userLink">@${this.model.get('username')}</h5>
           <p>${this.model.get('author')}</p>
           <p>${this.model.get('timestamp')}</p>
         </section>

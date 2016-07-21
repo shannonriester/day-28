@@ -17,8 +17,7 @@ const LogoutView = Backbone.View.extend({
             url: `https://baas.kinvey.com/user/${settings.appKey}/_logout`,
             success: function(model, response) {
                 model.unset('password');
-                sessionStorage.removeItem('session');
-                delete session.authtoken;
+                localStorage.removeItem('authtoken');
                 router.navigate('login', {trigger:true});
                 console.log('User logged out!');
             }});

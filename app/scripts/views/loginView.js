@@ -8,7 +8,7 @@ import session from '../models/session';
 import SignupView from './signupView';
 
 const LoginView = Backbone.View.extend({
-    tagName: 'form',
+    tagName: 'div',
     className: 'login-form',
     events: {
         'click #login-btn': 'submitFunction',
@@ -30,9 +30,10 @@ const LoginView = Backbone.View.extend({
         return `
       <form class="login-modal">
         <h1>Riester's Tweeters</h1>
+        <h3>Log in to your account</h3>
         <input id="username" type="text" name="username" placeholder="username" />
         <input id="password" type="password" name="password" placeholder="password" />
-        <input id="login-btn" type="submit" name="submit" placeholder="submit" />
+        <input id="login-btn" type="submit" name="submit" placeholder="Log in" />
         <section class="register">
             <h3>Not Registered? Sign Up</h3>
             <button id="signup-btn" type="button" name="signup-btn">Sign Up</button>
