@@ -458,7 +458,8 @@ textarea {
     padding: 0; }
   .tweets-feed .tweetLi {
     list-style-type: none;
-    display: flex; }
+    display: flex;
+    border-bottom: 1px solid #E1E8ED; }
     .tweets-feed .tweetLi .edit-btns {
       display: none; }
     .tweets-feed .tweetLi .tweet-user-info {

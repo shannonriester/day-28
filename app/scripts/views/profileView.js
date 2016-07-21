@@ -15,11 +15,12 @@ const ProfileView = Backbone.View.extend({
         });
       }
       this.model = userCollection.get(id);
+      console.log(userCollection.get(id));
       this.model.fetch();
       this.model.on('change', () =>{
         this.render();
       });
-      console.log(this.model, ' this.model');
+
       // userCollection.fetch({
       //   url: `https://baas.kinvey.com/user/${settings.appKey}/?query={"username":"${username}"}`,
       //   success: (response) =>{
@@ -44,7 +45,7 @@ const ProfileView = Backbone.View.extend({
   className: 'profile',
   events: {},
   template: () => {
-    console.log('this.model ', this.model);
+    console.log(currentModel);
     return `
       <div id="short-bio">
         <h2>${this.model.get('firstname')} ${this.model.get('lastname')}</h2>

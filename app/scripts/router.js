@@ -9,10 +9,10 @@ import LoginView from './views/loginView';
 import LogoutView from './views/logoutView';
 import ProfileView from './views/profileView';
 import TweetPageView from './views/tweetPageView';
-// import SignupView from './views/signupView';
-// import FeedView from './views/feedView';
-// import TweetView from './views/tweetView';
-// import TweetPost from './views/tweetPost';
+import SignupView from './views/signupView';
+import FeedView from './views/feedView';
+import TweetView from './views/tweetView';
+import TweetPost from './views/tweetPost';
 
 const Router = Backbone.Router.extend({
   routes : {
@@ -20,7 +20,7 @@ const Router = Backbone.Router.extend({
     'login'          :  'loginFunction',
     'login/signup' :  'signupFunction',
     'logout'      :   'logoutFunction',
-    'user/:username' :  'profileFunction'
+    'user/:id' :  'profileFunction'
   },
   loginFunction : function(){
     tweetsCollection.off();

@@ -25,8 +25,9 @@ const Session = Backbone.Model.extend({
      {
       success: (model, response) => {
           this.unset('password');
+          console.log(model, ' session: model ');
           window.localStorage.setItem('authtoken', response._kmd.authtoken);
-          router.navigate(`user/${model.get('username')}`, {trigger:true});
+          router.navigate(`user/${model.get('_id')}`, {trigger:true});
       },
       error: function() {
           console.log('ERROR! User failed to login! See session.js');
